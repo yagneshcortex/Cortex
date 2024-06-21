@@ -879,33 +879,6 @@
     <script src="assets/plugins/plugins.js"></script>
     <script src="assets/js/functions.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#contactform').on('submit', function(event) {
-            event.preventDefault();
-            var formData = $(this).serialize();
-
-            $.ajax({
-                type: 'POST',
-                url: $(this).attr('action'),
-                data: formData,
-                success: function(response) {
-                    if (response.trim() === 'success') {
-                        $('#success').show();
-                        $('#error').hide();
-                    } else {
-                        $('#success').hide();
-                        $('#error').show();
-                    }
-                },
-                error: function() {
-                    $('#success').hide();
-                    $('#error').show();
-                }
-            });
-        });
-    });
-</script>
+    
   </body>
 </html>
