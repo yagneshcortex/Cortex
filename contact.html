@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -163,10 +164,11 @@
         <!-- end row -->
         <div class="row g-5 mt-2">
           <div class="col-12 col-xl-8">
-            <!-- Contact Form -->
+           <!-- Contact Form -->
             <form target="_blank" action="https://formsubmit.co/details.cortex@gmail.com" method="POST">
-              <div class="contact-form">
-            <div class="row gx-3 gy-0">
+           <div class="contact-form">
+            <form method="post" id="contactform">
+                <div class="row gx-3 gy-0">
                     <div class="col-12 col-md-6">
                         <input type="text" id="name" name="name" placeholder="Name" required>
                     </div>
@@ -185,8 +187,7 @@
                 <span id="success">Thank you! Your Message has been sent.</span>
                 <span id="error">Something went wrong, Please try again!</span>
             </div>
-        </div>
-        <!-- end contact-form -->
+        </div><!-- end contact-form -->
         
           </div>
           <div class="col-12 col-xl-4">
@@ -197,20 +198,8 @@
               <h3>Coming Soon...</h3>
             </div>
           </div>
-              </div>
-       </form>
-            
-            <!-- end contact-form -->
-          </div>
-          <div class="col-12 col-xl-4">
-            <h6 class="sm-heading">Support:</h6>
-            <h3>+91 73592 18531 <br />hello@cortexstudio.in</h3>
-            <div class="mt-4 mt-xl-5">
-              <h6 class="sm-heading">Studio address:</h6>
-              <h3>Coming Soon...</h3>
-            </div>
-          </div>
         </div>
+      </form>
         <!-- end row -->
 
         <!-- Map -->
@@ -348,5 +337,5 @@
       }
       google.maps.event.addDomListener(window, "load", initialize);
     </script>
-  </body>
+</body>
 </html>
