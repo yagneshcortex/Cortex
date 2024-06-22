@@ -1,29 +1,36 @@
 <?php
-    // Sanitize and validate input data
-    function sanitize_input($data) {
-        return htmlspecialchars(strip_tags(trim($data)));
-    }
+include("class.phpmailer.php");
+function sendMail($address,$username,$body){
+            $mail = new PHPMailer();
+            $mail->IsSMTP(); // telling the class to use SMTP
+            //$mail->Host       = "smtp.gmail.com"; // SMTP server
+            $mail->SMTPDebug  = 1;                     // enables SMTP debug information (for testing)
+                                // 1 = errors and messages
+                                                                           // 2 = messages only
+            // $mail->SMTPAuth   = true;                  // enable SMTP authentication
+            // $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
+            // $mail->Host       = "smtp.gmail.com";      // sets  as the SMTP server
+            // $mail->Port       = 465;                   // set the SMTP port for the server
+            // $mail->Username   = "xyz@gmail.com";  // username
+            // $mail->Password   = "test121232";            // password
 
-    $name = sanitize_input($_POST['name']);
-    $email = filter_var(sanitize_input($_POST['email']), FILTER_VALIDATE_EMAIL);
-    $subject = sanitize_input($_POST['subject']);
-    $message = sanitize_input($_POST['message']);
+            $mail->SetFrom('hello@cortexstudio.in', 'Contact');
 
-    if ($name && $email && $subject && $message) {
-        $to = 'hello@cortexstudio.in'; // <-- Enter your E-Mail address here.
-        $body = "From: $name <br> E-Mail: $email <br> Message: <br> $message";
+            $mail->Subject    = "Enquiry for tour and travels package";
 
-        $headers  = 'MIME-Version: 1.0' . "\r\n";
-        $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-        $headers .= 'From:' . $email . "\r\n";
-        $headers .= 'Cc:' . $email . "\r\n";
 
-        if (mail($to, "New Message from Website: $subject", $body, $headers)) {
-            echo "success";
-        } else {
-            echo "error";
-        }
-    } else {
-        echo "error";
-    }
+
+            $mail->MsgHTML($body);
+
+            $address = $address;
+            $mail->AddAddress($address, $username);
+            $mail->AddCC('hello@cortexstudio.in');
+
+            if(!$mail->Send()) {
+            echo "Mailer Error: " . $mail->ErrorInfo;
+            } else {
+            echo "Message sent!";
+            }
+}
+
 ?>
